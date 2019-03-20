@@ -23,12 +23,12 @@ cargo {
     port = 8080
 
     deployable{
-        context = "guess_number"
+        context = "com.nazarvladyka"
         file = file('build/libs/GL_SpringFramework_part2-1.0-SNAPSHOT.war')
     }
 
     local {
-        homeDir = file('D:/apache-tomcat-8.5.38')
+        homeDir = file('D:\\Courses\\programming\\Java[BaseCamp]\\Java_BaseCamp_HW\\additional\\apache-tomcat-8.5.38')
     }
 }
 

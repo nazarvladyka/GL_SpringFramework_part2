@@ -1,12 +1,9 @@
 package com.nazarvladyka.guessNumber.controller;
 
-//import basecamp.service.GameService;
-//import basecamp.wire.GameResponse;
 import com.nazarvladyka.guessNumber.service.GameService;
 import com.nazarvladyka.guessNumber.wire.GameResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,21 +12,19 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-public class GameController {
+public class MyController {
 
     private final GameService gameService;
 
     @Autowired
-    public GameController(GameService gameService) {
+    public MyController(GameService gameService) {
         this.gameService = gameService;
     }
 
-    @RequestMapping(value = "/game/{num}", method = RequestMethod.GET)
+    @RequestMapping(value = "/{number}", method = RequestMethod.GET)
     @ResponseBody
-    public ResponseEntity<String> play(@PathVariable String num) {
-
-        gameService.isGameWon(num);
-
+    public ResponseEntity<String> play(@PathVariable String number) {
+        gameService.isGameWon(number);
         GameResponse response = new GameResponse(gameService);
 
         return new ResponseEntity<>(response.getJson(), response.getResponseHeaders(), HttpStatus.OK);

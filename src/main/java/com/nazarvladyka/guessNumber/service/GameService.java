@@ -3,23 +3,20 @@ package com.nazarvladyka.guessNumber.service;
 import java.util.Random;
 
 public class GameService {
-
     private final Random random = new Random();
-    private String result;
+    private String message;
 
     public void isGameWon(String num) {
-
         int number = random.nextInt(2);
         int guess = Integer.parseInt(num);
 
-        result = (guess == number) ? "Winner!" : "Looser!";
+        message = (guess == number) ? "Congrats, you win!" : "Sorry, but you lose(";
+    }
+    public String getMessage() {
+        return message;
     }
 
-    public String getResult() {
-        return result;
-    }
-
-    public void setResult(String result) {
-        this.result = result;
+    public void setMessage(String message) {
+        this.message = message;
     }
 }

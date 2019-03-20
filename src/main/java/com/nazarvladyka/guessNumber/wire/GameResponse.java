@@ -1,6 +1,5 @@
 package com.nazarvladyka.guessNumber.wire;
 
-//import basecamp.service.GameService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
@@ -8,7 +7,6 @@ import com.nazarvladyka.guessNumber.service.GameService;
 import org.springframework.http.HttpHeaders;
 
 public class GameResponse {
-
     private HttpHeaders responseHeaders;
     private String json;
 
@@ -18,9 +16,7 @@ public class GameResponse {
     }
 
     private void convert(GameService gameService) {
-
         responseHeaders.add("Content-Type", "application/json;charset=UTF-8");
-
         ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
 
         try {
