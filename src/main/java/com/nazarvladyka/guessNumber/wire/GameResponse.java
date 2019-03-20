@@ -3,24 +3,24 @@ package com.nazarvladyka.guessNumber.wire;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
-import com.nazarvladyka.guessNumber.service.GameService;
+import com.nazarvladyka.guessNumber.service.GameManager;
 import org.springframework.http.HttpHeaders;
 
 public class GameResponse {
     private HttpHeaders responseHeaders;
     private String json;
 
-    public GameResponse(GameService gameService) {
+    public GameResponse(GameManager gameManager) {
         responseHeaders = new HttpHeaders();
-        convert(gameService);
+        convert(gameManager);
     }
 
-    private void convert(GameService gameService) {
+    private void convert(GameManager gameManager) {
         responseHeaders.add("Content-Type", "application/json;charset=UTF-8");
         ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
 
         try {
-            json = ow.writeValueAsString(gameService);
+            json = ow.writeValueAsString(gameManager);
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }

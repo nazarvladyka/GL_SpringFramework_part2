@@ -1,6 +1,6 @@
 package com.nazarvladyka.guessNumber.controller;
 
-import com.nazarvladyka.guessNumber.service.GameService;
+import com.nazarvladyka.guessNumber.service.GameManager;
 import com.nazarvladyka.guessNumber.wire.GameResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,18 +14,18 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class MyController {
 
-    private final GameService gameService;
+    private final GameManager gameManager;
 
     @Autowired
-    public MyController(GameService gameService) {
-        this.gameService = gameService;
+    public MyController(GameManager gameManager) {
+        this.gameManager = gameManager;
     }
 
     @RequestMapping(value = "/{number}", method = RequestMethod.GET)
     @ResponseBody
     public ResponseEntity<String> play(@PathVariable String number) {
-        gameService.isGameWon(number);
-        GameResponse response = new GameResponse(gameService);
+        gameManager.isGameWon(number);
+        GameResponse response = new GameResponse(gameManager);
 
         return new ResponseEntity<>(response.getJson(), response.getResponseHeaders(), HttpStatus.OK);
     }

@@ -1,9 +1,12 @@
 package com.nazarvladyka.guessNumber.service;
 
+import org.springframework.stereotype.Service;
+
 import java.util.Random;
 
-public class GameService {
-    private final Random random = new Random();
+@Service
+public class GameManager {
+    private Random random = new Random();
     private String message;
 
     public void isGameWon(String num) {
@@ -12,11 +15,16 @@ public class GameService {
 
         message = (guess == number) ? "Congrats, you win!" : "Sorry, but you lose(";
     }
+
     public String getMessage() {
         return message;
     }
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    public void setRandom(Random random) {
+        this.random = random;
     }
 }

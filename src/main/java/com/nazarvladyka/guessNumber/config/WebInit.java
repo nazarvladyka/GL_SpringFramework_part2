@@ -1,6 +1,5 @@
-package com.nazarvladyka.guessNumber.Util;
+package com.nazarvladyka.guessNumber.config;
 
-import com.nazarvladyka.guessNumber.config.JavaConfig;
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.servlet.DispatcherServlet;
@@ -9,7 +8,7 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRegistration;
 
-public class AppInitializer implements WebApplicationInitializer {
+public class WebInit implements WebApplicationInitializer {
 
     private static final String DISPATCHER_SERVLET_NAME = "dispatcher";
 
@@ -18,7 +17,7 @@ public class AppInitializer implements WebApplicationInitializer {
 
         AnnotationConfigWebApplicationContext context =
                 new AnnotationConfigWebApplicationContext();
-        context.register(JavaConfig.class);
+        context.register(WebConfig.class);
 
         DispatcherServlet dispatcherServlet =
                 new DispatcherServlet(context);
